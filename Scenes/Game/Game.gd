@@ -11,6 +11,9 @@ extends Control
 @onready var flags_label: Label = %FlagsLabel
 @onready var game_timer: Timer = %GameTimer
 
+const EXPLOSION = preload("uid://bc435sqefj0xe")
+const WIN_SOUND = preload("uid://dunuqr7fgtkw7")
+
 #const MINE_SWITCH_SOUND = preload("uid://c2upc21hbrvpf")
 const MINE_SWITCH_SOUND = preload("uid://5jl2xqt5wau5")
 const FLAG_SOUND = preload("uid://c24sj0f5wj8aw")
@@ -58,7 +61,9 @@ func on_game_over(is_win: bool) -> void:
 		await get_tree().create_timer(0.15).timeout
 		play_sound(sound_player, MINE_SWITCH_SOUND)
 		await get_tree().create_timer(0.2).timeout
-		game_over_sound.play()
+		play_sound(game_over_sound, EXPLOSION)
+	else:
+		play_sound(game_over_sound, WIN_SOUND)
 	
 	var text = "Congratulations" if is_win else "Game Over"
 	minefield.on_game_over()
