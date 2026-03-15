@@ -1,4 +1,4 @@
-class_name Minefield extends PanelContainer
+class_name Minefield extends Control
 
 const GRID_BUTTON = preload("uid://dorufvfhi1g8a")
 const NEXT_TILE_REVEAL_TIMEOUT: float = 0.05
@@ -10,9 +10,10 @@ const FLAG_CANT_SOUND: AudioStream = preload("uid://85t1nch3gn8")
 
 const PITCH_VARIATION: Vector2 = Vector2(0.85, 1.15)
 
+@onready var grid_wrapper: AspectRatioContainer = %GridWrapper
 @onready var tiles: GridContainer = %Tiles
 var game_board: GameBoard
-@onready var interaction_block: Panel = $InteractionBlock
+@onready var interaction_block: Panel = %InteractionBlock
 @onready var wave_sound: AudioStreamPlayer = $WaveSound
 @onready var flag_sound: AudioStreamPlayer = $FlagSound
 
@@ -31,6 +32,7 @@ func set_up(difficulty: Difficulty, gb: GameBoard) -> void:
 	generate_grid(difficulty.rows, difficulty.cols)
 	
 func generate_grid(rows: int, cols: int) -> void:
+	update_grid_ratio(rows, cols)
 	var grid_size: int = rows * cols
 	tiles.columns = cols
 	for i in range(grid_size): 
@@ -73,7 +75,6 @@ func on_reveal_wave(cells: Array[Cell], wave_index: int):
 	if wave_index > 0:
 		var timeout: float = NEXT_TILE_REVEAL_TIMEOUT * wave_index
 		await get_tree().create_timer(timeout).timeout
-	# TODO sound
 	wave_sound.stop()
 	variate_pitch(wave_sound)
 	wave_sound.play()
@@ -89,3 +90,5 @@ func play_sound(player: AudioStreamPlayer, audio: AudioStream) -> void:
 func variate_pitch(player: AudioStreamPlayer) -> void:
 	player.pitch_scale = randf_range(PITCH_VARIATION.x, PITCH_VARIATION.y)
 	
+func update_grid_ratio(rows: int, cols: int) -> void:
+	grid_wrapper.ratio = float(cols) / float(rows)

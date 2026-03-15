@@ -205,8 +205,8 @@ text = "000"
 [node name="Minefield" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1105631894 instance=ExtResource("2_xbxml")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 1
+size_flags_vertical = 3
 
 [node name="GameOver" type="PanelContainer" parent="PanelContainer" unique_id=1586719214]
 unique_name_in_owner = true
