@@ -9,6 +9,7 @@ const FLAG_SOUND: AudioStream = preload("uid://c24sj0f5wj8aw")
 const UNFLAG_SOUND: AudioStream = preload("uid://0dadcsopcynp")
 const FLAG_CANT_SOUND: AudioStream = preload("uid://85t1nch3gn8")
 const TILE_SPAWN_SOUND = preload("uid://budo0po32rsgw")
+const REVEAL_SOUND = preload("uid://c0tqp63tlgv1j")
 
 
 const PITCH_VARIATION: Vector2 = Vector2(0.85, 1.15)
@@ -21,6 +22,7 @@ var game_board: GameBoard
 @onready var flag_sound: AudioStreamPlayer = $FlagSound
 
 signal flags_updated(flags_left: int)
+signal init_anim_end
 
 func _ready() -> void:
 	EventBus.toggle_flag.connect(on_flag_toggle)
@@ -59,12 +61,17 @@ func play_grid_init_animation() -> void:
 			if !scheduled_sounds.has(wave_step):
 				scheduled_sounds[wave_step] = true
 				sequence_tween.parallel().tween_callback(_play_wave_spawn_sound).set_delay(delay)
+	await sequence_tween.finished
+	on_init_animation_end()
 
 func animate_row(row_index: int) -> void:
 	for i in range(game_board.cols):
 		var tile_index = row_index * game_board.cols + i
 		var tile: GridButton = tiles.get_children()[tile_index]
 		tile.play_start_animation()
+		
+func on_init_animation_end() -> void:
+	init_anim_end.emit()
 
 func on_flag_toggle(cell: Cell) -> void:
 	var toggled = game_board.toggle_flag(cell)
@@ -107,9 +114,7 @@ func on_reveal_wave(cells: Array[Cell], wave_index: int):
 	tween.tween_callback(execute_reveal_wave.bind(saved_cells))
 
 func execute_reveal_wave(cells: Array[Cell]) -> void:
-	wave_sound.stop()
-	variate_pitch(wave_sound)
-	wave_sound.play()
+	play_sound(wave_sound, REVEAL_SOUND)
 	for cell in cells:
 		on_cell_update(cell)
 

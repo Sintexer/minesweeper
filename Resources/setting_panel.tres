@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://dfxxtk3pxsja5"]
+
+[ext_resource type="Texture2D" uid="uid://bx020qse8du5y" path="res://assets/art/spritesheet.png" id="1_p36rv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddsq7"]
+atlas = ExtResource("1_p36rv")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+texture = SubResource("AtlasTexture_ddsq7")

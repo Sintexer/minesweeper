@@ -10,6 +10,7 @@ extends Control
 @onready var timer_label: Label = %TimerLabel
 @onready var flags_label: Label = %FlagsLabel
 @onready var game_timer: Timer = %GameTimer
+@onready var quick_start_toggle: CheckButton = %QuickStartToggle
 
 const EXPLOSION = preload("uid://bc435sqefj0xe")
 const WIN_SOUND = preload("uid://dunuqr7fgtkw7")
@@ -31,11 +32,15 @@ var time: int = 0
 var rows: int = 10
 var cols: int = 10
 
+var quick_start: bool = false
+
 func _ready() -> void:
+	quick_start = quick_start_toggle.button_pressed
 	game_board = GameBoard.new()
 	game_board.game_over.connect(on_game_over)
 	minefield.flags_updated.connect(update_flags_label)
 	game_timer.timeout.connect(update_timer_label)
+	minefield.init_anim_end.connect(on_init_anim_end)
 	
 	game_board.cell_updated.connect(minefield.on_cell_update)
 	game_board.reveal_wave.connect(minefield.on_reveal_wave)
@@ -52,6 +57,10 @@ func set_up(difficulty: Difficulty) -> void:
 	update_flags_label(minefield.get_flags_left())
 	update_timer_label()
 	game_timer.start()
+	
+func on_init_anim_end() -> void:
+	if quick_start:
+		game_board.reveal_any_start_cell()
 	
 func on_game_over(is_win: bool) -> void:
 	minefield.block_interaction()
@@ -92,3 +101,7 @@ func play_sound(player: AudioStreamPlayer, audio: AudioStream) -> void:
 func _on_difficulty_button_item_selected(index: int) -> void:
 	var difficulty = difficulties[index]
 	set_up(difficulty)
+
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	quick_start = toggled_on

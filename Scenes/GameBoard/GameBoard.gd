@@ -87,6 +87,36 @@ func get_cell_by_index(i: int) -> Cell:
 	var col: int = i % cols
 	return get_cell(row, col)
 
+func reveal_any_start_cell() -> void:
+	var size: int = rows * cols
+	var best_index: int = -1
+	var best_number: int = 9 # max 8 + 1
+	var indices_from_center: Array[int] = build_indices_from_center(size)
+			
+	for i in indices_from_center:
+		var cell: Cell = get_cell_by_index(i)
+		if cell.number < best_number && !cell.is_mine:
+			best_index = i
+			best_number = cell.number
+		if best_index == 0:
+			break
+	var c: Cell = get_cell_by_index(best_index)
+	if best_number != 9:
+		try_reveal_cell(c)
+
+func build_indices_from_center(size: int) -> Array[int]:
+	var mid: int = int(size / 2.0)
+	var indices_from_center: Array[int] = []
+	if size % 2 != 0:
+		indices_from_center.append(mid)
+
+	for i in range(1, mid + 1):
+		if mid + i < size:
+			indices_from_center.append(mid + i)
+		if mid - i >= 0:
+			indices_from_center.append(mid - i)
+	return indices_from_center
+
 func get_cell(i: int, j: int) -> Cell:
 	return cells[i][j]
 	
