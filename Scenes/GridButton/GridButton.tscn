@@ -12,8 +12,9 @@ region = Rect2(32, 32, 16, 16)
 atlas = ExtResource("1_mm73c")
 region = Rect2(64, 16, 16, 16)
 
-[node name="GridButton" type="AspectRatioContainer" unique_id=225578322]
+[node name="GridButton" type="Control" unique_id=1364501325]
 custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,28 +24,56 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_bk6cu")
 
-[node name="PanelIcon" type="TextureRect" parent="." unique_id=2109305181]
+[node name="VisualWrapper" type="Control" parent="." unique_id=478948197]
 unique_name_in_owner = true
-layout_mode = 2
-texture = SubResource("AtlasTexture_mm73c")
-
-[node name="Button" parent="." unique_id=1433960630 instance=ExtResource("2_6gos1")]
-unique_name_in_owner = true
-layout_mode = 2
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 1
 
-[node name="OverlayIcon" type="TextureRect" parent="." unique_id=1564558414]
+[node name="PanelIcon" type="TextureRect" parent="VisualWrapper" unique_id=2109305181]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_mm73c")
+
+[node name="Button" parent="VisualWrapper" unique_id=1433960630 instance=ExtResource("2_6gos1")]
+unique_name_in_owner = true
+layout_mode = 1
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 1
+
+[node name="OverlayIcon" type="TextureRect" parent="VisualWrapper" unique_id=1564558414]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
-[node name="OverlayFlag" type="TextureRect" parent="." unique_id=1357401458]
+[node name="OverlayFlag" type="TextureRect" parent="VisualWrapper" unique_id=1357401458]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 2
 texture = SubResource("AtlasTexture_bk6cu")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="gui_input" from="OverlayFlag" to="." method="_on_gui_input"]
+[connection signal="pressed" from="VisualWrapper/Button" to="." method="_on_button_pressed"]
+[connection signal="gui_input" from="VisualWrapper/OverlayFlag" to="." method="_on_gui_input"]

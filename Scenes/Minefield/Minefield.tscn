@@ -62,5 +62,7 @@ layout_mode = 2
 
 [node name="WaveSound" type="AudioStreamPlayer" parent="." unique_id=147913768]
 stream = ExtResource("4_yj0ix")
+volume_db = -20.0
 
 [node name="FlagSound" type="AudioStreamPlayer" parent="." unique_id=835173509]
+volume_db = -20.0

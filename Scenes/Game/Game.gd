@@ -53,13 +53,12 @@ func set_up(difficulty: Difficulty) -> void:
 func on_game_over(is_win: bool) -> void:
 	minefield.block_interaction()
 	game_timer.stop()
-	
-	play_sound(sound_player, REVEAL_SOUND)
-	await get_tree().create_timer(0.15).timeout
-	play_sound(sound_player, MINE_SWITCH_SOUND)
-	await get_tree().create_timer(0.2).timeout
-	
-	game_over_sound.play()
+	if !is_win:
+		play_sound(sound_player, REVEAL_SOUND)
+		await get_tree().create_timer(0.15).timeout
+		play_sound(sound_player, MINE_SWITCH_SOUND)
+		await get_tree().create_timer(0.2).timeout
+		game_over_sound.play()
 	
 	var text = "Congratulations" if is_win else "Game Over"
 	minefield.on_game_over()

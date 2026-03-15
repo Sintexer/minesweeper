@@ -5,12 +5,13 @@ class_name GridButton extends Control
 @onready var overlay_icon: TextureRect = %OverlayIcon
 @onready var overlay_flag: TextureRect = %OverlayFlag
 @onready var button: TextureButton = %Button
+@onready var visual_wrapper: Control = %VisualWrapper
 
 
 var cell: Cell
 
-func _ready() -> void:
-	play_start_animation()
+#func _ready() -> void:
+	#play_start_animation()
 
 #func _ready() -> void:
 	#EventBus.game_over.connect(on_game_over)
@@ -25,6 +26,12 @@ func set_up(c: Cell) -> void:
 	overlay_icon.hide()
 	panel_icon.texture = SpriteManager.get_cell_texture(c)
 	overlay_icon.texture = null
+	
+	# prepare for the init animation
+	#visual_wrapper.scale = Vector2.ONE * 1.3
+	visual_wrapper.position.y = -50.0
+	visual_wrapper.modulate.a = 0.0
+	panel_icon.hide()
 	
 func on_update() -> void:
 	if cell.is_revealed:
@@ -56,16 +63,18 @@ func hide_button() -> void:
 	tween.tween_property(button, "scale", Vector2(1.4, 1.4), 0.1)
 	tween.parallel().tween_property(button, "modulate:a", 0.0, 0.1)
 	await tween.finished
+	panel_icon.show()
 	button.hide()
 
 func play_start_animation() -> void:
-	button.scale = Vector2.ONE * 1.5
-	button.position.y = -10.0
+	pass
 	var tween = create_tween()
-	var tween_duration: float = 0.2
-	
-	tween.tween_property(button, "scale", Vector2.ONE, tween_duration)
-	tween.parallel().tween_property(button, "position:y",0, tween_duration)
+	var tween_duration: float = 0.1
+	visual_wrapper.modulate.a = 1.0
+	#tween.tween_property(visual_wrapper, "scale", Vector2.ONE, tween_duration)
+	tween.parallel().tween_property(visual_wrapper, "position:y",0.0, tween_duration)
+	tween.parallel().tween_property(visual_wrapper, "modulate:a", 1.0, tween_duration)
+	await tween.finished
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
