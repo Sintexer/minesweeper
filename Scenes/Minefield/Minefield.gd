@@ -1,0 +1,91 @@
+class_name Minefield extends PanelContainer
+
+const GRID_BUTTON = preload("uid://dorufvfhi1g8a")
+const NEXT_TILE_REVEAL_TIMEOUT: float = 0.05
+
+const FLAG_SOUND: AudioStream = preload("uid://c24sj0f5wj8aw")
+const UNFLAG_SOUND: AudioStream = preload("uid://0dadcsopcynp")
+const FLAG_CANT_SOUND: AudioStream = preload("uid://85t1nch3gn8")
+
+
+const PITCH_VARIATION: Vector2 = Vector2(0.85, 1.15)
+
+@onready var tiles: GridContainer = %Tiles
+var game_board: GameBoard
+@onready var interaction_block: Panel = $InteractionBlock
+@onready var wave_sound: AudioStreamPlayer = $WaveSound
+@onready var flag_sound: AudioStreamPlayer = $FlagSound
+
+signal flags_updated(flags_left: int)
+
+func _ready() -> void:
+	EventBus.toggle_flag.connect(on_flag_toggle)
+	EventBus.reveal_cell.connect(on_reveal_cell)
+	
+func set_up(difficulty: Difficulty, gb: GameBoard) -> void:
+	interaction_block.hide()
+	game_board = gb
+	for tile: GridButton in tiles.get_children():
+		tiles.remove_child(tile)
+		tile.queue_free()
+	generate_grid(difficulty.rows, difficulty.cols)
+	
+func generate_grid(rows: int, cols: int) -> void:
+	var grid_size: int = rows * cols
+	tiles.columns = cols
+	for i in range(grid_size): 
+		var tile: GridButton = GRID_BUTTON.instantiate()
+		tiles.add_child(tile)
+		tile.set_up(game_board.get_cell_by_index(i))
+
+func on_flag_toggle(cell: Cell) -> void:
+	var toggled = game_board.toggle_flag(cell)
+	if toggled:
+		play_sound(flag_sound, UNFLAG_SOUND if cell.is_flagged else FLAG_SOUND)
+	else:
+		play_sound(flag_sound, FLAG_CANT_SOUND)
+	
+	flags_updated.emit(get_flags_left())
+
+func get_flags_left() -> int:
+	return game_board.mines_number - game_board.flags
+
+func on_cell_update(cell: Cell) -> void:
+	get_grid_button(cell).on_update()
+	
+func on_reveal_cell(cell: Cell) -> void:
+	game_board.try_reveal_cell(cell)
+	
+func on_game_over() -> void:
+	interaction_block.show()
+	for grid_button: GridButton in tiles.get_children():
+		grid_button.on_game_over()
+
+func block_interaction() -> void:
+	interaction_block.show()
+
+func get_grid_button(cell: Cell) -> GridButton:
+	return tiles.get_children()[cell.index]
+	
+func on_reveal_wave(cells: Array[Cell], wave_index: int):
+	var saved_cells: Array[Cell] = []
+	saved_cells.append_array(cells)
+	if wave_index > 0:
+		var timeout: float = NEXT_TILE_REVEAL_TIMEOUT * wave_index
+		await get_tree().create_timer(timeout).timeout
+	# TODO sound
+	wave_sound.stop()
+	variate_pitch(wave_sound)
+	wave_sound.play()
+	for cell in saved_cells:
+		on_cell_update(cell)
+
+func play_sound(player: AudioStreamPlayer, audio: AudioStream) -> void:
+	player.stop()
+	variate_pitch(player)
+	player.stream = audio
+	player.play()
+	
+func variate_pitch(player: AudioStreamPlayer) -> void:
+	player.pitch_scale = randf_range(PITCH_VARIATION.x, PITCH_VARIATION.y)
+	

@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bqjfqyu0paaaj"]
+
+[ext_resource type="Texture2D" uid="uid://bx020qse8du5y" path="res://assets/art/spritesheet.png" id="2_bybxj"]
+[ext_resource type="Script" uid="uid://bbu5lnbyph84" path="res://Scenes/Minefield/Minefield.gd" id="2_vyfvj"]
+[ext_resource type="PackedScene" uid="uid://dorufvfhi1g8a" path="res://Scenes/GridButton/GridButton.tscn" id="3_vyfvj"]
+[ext_resource type="AudioStream" uid="uid://c0tqp63tlgv1j" path="res://assets/audio/reveal_sound.ogg" id="4_yj0ix"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bybxj"]
+atlas = ExtResource("2_bybxj")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vyfvj"]
+texture = SubResource("AtlasTexture_bybxj")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[node name="Minefield" type="PanelContainer" unique_id=785610151]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.99754727, 0.994323)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_vyfvj")
+script = ExtResource("2_vyfvj")
+
+[node name="Tiles" type="GridContainer" parent="." unique_id=1912883150]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="GridButton" parent="Tiles" unique_id=673635598 instance=ExtResource("3_vyfvj")]
+layout_mode = 2
+
+[node name="GridButton2" parent="Tiles" unique_id=1075066015 instance=ExtResource("3_vyfvj")]
+layout_mode = 2
+
+[node name="GridButton3" parent="Tiles" unique_id=12837099 instance=ExtResource("3_vyfvj")]
+layout_mode = 2
+
+[node name="GridButton4" parent="Tiles" unique_id=474192721 instance=ExtResource("3_vyfvj")]
+layout_mode = 2
+
+[node name="GridButton5" parent="Tiles" unique_id=856649448 instance=ExtResource("3_vyfvj")]
+layout_mode = 2
+
+[node name="GridButton6" parent="Tiles" unique_id=1463235089 instance=ExtResource("3_vyfvj")]
+layout_mode = 2
+
+[node name="InteractionBlock" type="Panel" parent="." unique_id=197913284]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="WaveSound" type="AudioStreamPlayer" parent="." unique_id=147913768]
+stream = ExtResource("4_yj0ix")
+
+[node name="FlagSound" type="AudioStreamPlayer" parent="." unique_id=835173509]

@@ -1,0 +1,26 @@
+[gd_resource type="Theme" format=3 uid="uid://b15b3vjduhmhi"]
+
+[ext_resource type="Texture2D" uid="uid://bx020qse8du5y" path="res://assets/art/spritesheet.png" id="1_ho8mu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_luv3h"]
+texture = ExtResource("1_ho8mu")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(96, 16, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ho8mu"]
+load_path = "res://.godot/imported/spritesheet.png-0d238e7666a70bd384946abdfbe8dc49.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6hc6j"]
+texture = SubResource("CompressedTexture2D_ho8mu")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(32, 0, 16, 16)
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxTexture_luv3h")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_6hc6j")

@@ -1,0 +1,77 @@
+class_name GridButton extends Control
+
+
+@onready var panel_icon: TextureRect = %PanelIcon
+@onready var overlay_icon: TextureRect = %OverlayIcon
+@onready var overlay_flag: TextureRect = %OverlayFlag
+@onready var button: TextureButton = %Button
+
+
+var cell: Cell
+
+func _ready() -> void:
+	play_start_animation()
+
+#func _ready() -> void:
+	#EventBus.game_over.connect(on_game_over)
+	#button.custom_minimum_size = Vector2(TILE_SIZE, TILE_SIZE)
+	#size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	#size_flags_vertical = Control.SIZE_EXPAND_FILL
+	
+
+func set_up(c: Cell) -> void:
+	cell = c
+	overlay_flag.hide()
+	overlay_icon.hide()
+	panel_icon.texture = SpriteManager.get_cell_texture(c)
+	overlay_icon.texture = null
+	
+func on_update() -> void:
+	if cell.is_revealed:
+		if !cell.is_mine:
+			hide_button()
+		return
+	
+	if cell.is_flagged:
+		button.disabled = true
+		overlay_flag.show()
+	else:
+		overlay_flag.hide()
+		button.disabled = false
+
+func on_game_over() -> void:
+	if cell.is_mine:
+		if cell.is_flagged:
+			overlay_flag.hide()
+			overlay_icon.texture = SpriteManager.BOMB_DEFUSED
+		elif cell.is_revealed:
+			overlay_icon.texture = SpriteManager.TILE_EXPLODED
+		else:
+			overlay_icon.texture = SpriteManager.BOMB
+	overlay_icon.show()
+
+func hide_button() -> void:	
+	button.modulate = Color(Color.WHITE, 0.5)
+	var tween = create_tween()
+	tween.tween_property(button, "scale", Vector2(1.4, 1.4), 0.1)
+	tween.parallel().tween_property(button, "modulate:a", 0.0, 0.1)
+	await tween.finished
+	button.hide()
+
+func play_start_animation() -> void:
+	button.scale = Vector2.ONE * 1.5
+	button.position.y = -10.0
+	var tween = create_tween()
+	var tween_duration: float = 0.2
+	
+	tween.tween_property(button, "scale", Vector2.ONE, tween_duration)
+	tween.parallel().tween_property(button, "position:y",0, tween_duration)
+
+func _on_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		if button.visible && event.button_index == MOUSE_BUTTON_RIGHT:
+			get_tree().root.set_input_as_handled()
+			EventBus.emit_toggle_flag(cell)
+		
+func _on_button_pressed() -> void:
+	EventBus.emit_reveal_cell(cell)

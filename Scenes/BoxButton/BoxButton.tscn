@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bvekxedl6bxog"]
+
+[ext_resource type="Texture2D" uid="uid://bx020qse8du5y" path="res://assets/art/spritesheet.png" id="1_ngi5h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gos1"]
+atlas = ExtResource("1_ngi5h")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk6cu"]
+atlas = ExtResource("1_ngi5h")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ine4"]
+atlas = ExtResource("1_ngi5h")
+region = Rect2(64, 0, 16, 16)
+
+[node name="BoxButton" type="TextureButton" unique_id=1433960630]
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_6gos1")
+texture_pressed = SubResource("AtlasTexture_bk6cu")
+texture_hover = SubResource("AtlasTexture_2ine4")
+stretch_mode = 0
