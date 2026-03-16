@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d000gw54471xj"]
+
+[ext_resource type="Script" uid="uid://rremcbbqcy0a" path="res://TextureRectWithShadow.gd" id="1_wih50"]
+
+[node name="TextureRectWithShadow" type="Control" unique_id=1244907621]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wih50")
+shadow_offset = Vector2(2, 2)
+
+[node name="Shadow" type="TextureRect" parent="." unique_id=1455723683]
+modulate = Color(0, 0, 0, 0.4117647)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1465178152]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -15,7 +15,7 @@ extends Control
 const EXPLOSION = preload("uid://bc435sqefj0xe")
 const WIN_SOUND = preload("uid://dunuqr7fgtkw7")
 
-#const MINE_SWITCH_SOUND = preload("uid://c2upc21hbrvpf")
+
 const MINE_SWITCH_SOUND = preload("uid://5jl2xqt5wau5")
 const FLAG_SOUND = preload("uid://c24sj0f5wj8aw")
 const REVEAL_SOUND = preload("uid://c0tqp63tlgv1j")
@@ -105,3 +105,5 @@ func _on_difficulty_button_item_selected(index: int) -> void:
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	quick_start = toggled_on
+	if quick_start:
+		game_board.reveal_any_start_cell()

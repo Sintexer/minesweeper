@@ -2,11 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b58hptc0vd2pf" path="res://Scenes/GridButton/GridButton.gd" id="1_bk6cu"]
 [ext_resource type="Texture2D" uid="uid://bx020qse8du5y" path="res://assets/art/spritesheet.png" id="1_mm73c"]
+[ext_resource type="Texture2D" uid="uid://ogitlljxs8h2" path="res://assets/sprites/tile_empty.tres" id="2_2ine4"]
 [ext_resource type="PackedScene" uid="uid://bvekxedl6bxog" path="res://Scenes/BoxButton/BoxButton.tscn" id="2_6gos1"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mm73c"]
-atlas = ExtResource("1_mm73c")
-region = Rect2(32, 32, 16, 16)
+[ext_resource type="PackedScene" uid="uid://d000gw54471xj" path="res://Scenes/TextureRectWithShadow/TextureRectWithShadow.tscn" id="6_3ktmc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bk6cu"]
 atlas = ExtResource("1_mm73c")
@@ -36,7 +34,7 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 1
 
-[node name="PanelIcon" type="TextureRect" parent="VisualWrapper" unique_id=2109305181]
+[node name="Background" type="TextureRect" parent="VisualWrapper" unique_id=764980508]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -44,25 +42,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_mm73c")
+texture = ExtResource("2_2ine4")
 
-[node name="Button" parent="VisualWrapper" unique_id=1433960630 instance=ExtResource("2_6gos1")]
-unique_name_in_owner = true
-layout_mode = 1
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 1
-
-[node name="OverlayIcon" type="TextureRect" parent="VisualWrapper" unique_id=1564558414]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="OverlayFlag" type="TextureRect" parent="VisualWrapper" unique_id=1357401458]
+[node name="NumberIcon" type="TextureRect" parent="VisualWrapper" unique_id=1602114967]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -71,9 +53,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
-mouse_default_cursor_shape = 2
+
+[node name="Button" parent="VisualWrapper" unique_id=1433960630 instance=ExtResource("2_6gos1")]
+unique_name_in_owner = true
+layout_mode = 1
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 1
+
+[node name="FlagIcon" parent="VisualWrapper" unique_id=2079130986 instance=ExtResource("6_3ktmc")]
+unique_name_in_owner = true
+layout_mode = 1
+mouse_filter = 1
 texture = SubResource("AtlasTexture_bk6cu")
+
+[node name="OverlayIcon" parent="VisualWrapper" unique_id=1410695778 instance=ExtResource("6_3ktmc")]
+unique_name_in_owner = true
+layout_mode = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="pressed" from="VisualWrapper/Button" to="." method="_on_button_pressed"]
-[connection signal="gui_input" from="VisualWrapper/OverlayFlag" to="." method="_on_gui_input"]

@@ -34,7 +34,7 @@ func get_cell_game_over_overlay_texture(c: Cell) -> Texture2D:
 
 func get_cell_texture(c: Cell) -> Texture2D:	
 	if c.number == 0 || c.is_mine:
-		return TILE_EMPTY
+		return null
 	elif c.number == 1:
 		return TILE_1
 	elif c.number == 2:

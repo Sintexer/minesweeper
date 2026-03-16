@@ -1,9 +1,10 @@
 class_name GridButton extends Control
 
 
-@onready var panel_icon: TextureRect = %PanelIcon
-@onready var overlay_icon: TextureRect = %OverlayIcon
-@onready var overlay_flag: TextureRect = %OverlayFlag
+@onready var number_icon: TextureRect = %NumberIcon
+@onready var overlay_icon: TextureRectWithShadow = %OverlayIcon
+@onready var overlay_flag: TextureRectWithShadow = %FlagIcon
+
 @onready var button: TextureButton = %Button
 @onready var visual_wrapper: Control = %VisualWrapper
 
@@ -24,14 +25,14 @@ func set_up(c: Cell) -> void:
 	cell = c
 	overlay_flag.hide()
 	overlay_icon.hide()
-	panel_icon.texture = SpriteManager.get_cell_texture(c)
+	var number = SpriteManager.get_cell_texture(c)
+	number_icon.texture = number
 	overlay_icon.texture = null
 	
 	# prepare for the init animation
 	#visual_wrapper.scale = Vector2.ONE * 1.3
 	visual_wrapper.position.y = -50.0
 	visual_wrapper.modulate.a = 0.0
-	panel_icon.hide()
 	
 func on_update() -> void:
 	if cell.is_revealed:
@@ -63,7 +64,7 @@ func hide_button() -> void:
 	tween.tween_property(button, "scale", Vector2(1.4, 1.4), 0.1)
 	tween.parallel().tween_property(button, "modulate:a", 0.0, 0.1)
 	await tween.finished
-	panel_icon.show()
+	number_icon.show()
 	button.hide()
 
 func play_start_animation() -> void:
