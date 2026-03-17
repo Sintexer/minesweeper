@@ -24,7 +24,7 @@ func set_up(difficulty: Difficulty) -> void:
 	generate_cells()
 	set_up_cel_numbers_and_mines()
 	hidden_tiles = rows * cols - mines_number
-	print_grid()
+	#print_grid()
 	
 func generate_cells() -> void:
 	cells.clear()
@@ -200,7 +200,7 @@ func process_win() -> void:
 
 func process_game_over() -> void:
 	game_over.emit(false)
-	
+		
 func print_grid() -> void:
 	print("-".repeat(15))
 	for i in range(cells.size()):

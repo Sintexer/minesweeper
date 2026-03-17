@@ -24,7 +24,7 @@ SpriteManager="*uid://huxm7f1r4oc8"
 
 window/size/viewport_width=720
 window/size/viewport_height=720
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [editor]
 

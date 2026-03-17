@@ -32,7 +32,16 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ln2h6"]
 texture = SubResource("AtlasTexture_xbxml")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y3kpf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1o7v"]
+atlas = ExtResource("1_gwu2e")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3586x"]
+texture = SubResource("AtlasTexture_m1o7v")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1q8bt"]
 atlas = ExtResource("1_gwu2e")
@@ -41,6 +50,8 @@ region = Rect2(112, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3k6gv"]
 atlas = ExtResource("1_gwu2e")
 region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m1o7v"]
 
 [sub_resource type="OggPacketSequence" id="OggPacketSequence_7ndyq"]
 packet_data = Array[Array]([[PackedByteArray("AXZvcmJpcwAAAAABRKwAAAAAAAAAdwEAAAAAALgB")], [PackedByteArray("A3ZvcmJpcysAAABYaXBoLk9yZyBsaWJWb3JiaXMgSSAyMDEyMDIwMyAoT21uaXByZXNlbnQpAgAAAA0AAABBUlRJU1Q9S2VubmV5RwAAAENPTU1FTlRTPVNvdW5kIGdlbmVyYXRlZCBieSBHYW1lU3ludGggZnJvbSBUc3VnaSAod3d3LnRzdWdpLXN0dWRpby5jb20pAQ=="), PackedByteArray("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")], [PackedByteArray("PI5lIWn9CENpXrupJgPETXD9AODblB+tCTP1jpcYz0bwb/+3/+JfDA=="), PackedByteArray("/JHvr5XNda1mCq2xzeQG4kYBABweH4pF0XNgnYZq3NVqVJPIgk73cgM="), PackedByteArray("Gvn9d9+0equMQC3U/IxSViGHCPoNAAAAAACANd+f1ID6+N/jj3VcCXd3Hu55abD8HC9tabO+78Ru/U3o1besdUF9r7r7G9hP6+IZNVeCDw8Np2oCuPnl4q7zdrjw8040xmk/ccRcx3AA"), PackedByteArray("ngn+57lp9VX7gFao9YoSgU0U9gUAAAAAAIDjfwP0L6Qg+F80B/d3X+liPJ4JErAbDaz27dd3gu4rs40a7u0GAAC4/5kRAAA="), PackedByteArray("Xnj9td1U/Qt/QCvU9hUFeZQT7AsAAAAAAAB5hlJg9Npsz+X9oeIWS0W6K1EBPcDiBb1ZbExJuf1SUgmJWLH6wsX2NkpwZLkoPbWg2q0QEexz5IxiF4HDAQAA6aW9X8QD"), PackedByteArray("vqjd/NgM/QNHUELBbn6iTPoVwr4AAAAAAACgvAikafBs2ivLUwu3xQX/SepjFJbzGe2iAS3W+7uruk9wjyCep+RLzCOBsPBqXaJeYa7jbU4AAIDOd+RQBQA="), PackedByteArray("Pmj92W6K/o0+EGKhds8oS4UrhH0BAAAAAABgrFMEPv0lrPM/Jkz0l2NYQe4ToTSCP+8uGbtR0EBK4oPbnATEjSAx3UmRs5p/nYg0lbHra/ogtzm5w0wAAAj5n493BQA="), PackedByteArray("3qj979wM/RxHkEOh9p8oEatC2BcAAAAAAAAuHwC4cxfwIXkZPH5BF0Qs/tXcb14S4QjWWZNwUkPPTM5OZVb17ieznpNFdZ4x7xKK90ZGGwAAuNqqgwQA"), PackedByteArray("Xnj9s91UgbDgCKRC7Z5RDhorhH0BCAAAAACAQZ0AharMaR5u9hojm2/zoi2wt6lQg451IeSZLpr4GVQ5aJ5YPHH/gEYGImMKRGv4aoipOH76ckFmTj3ImFErAACAPL2DDAA="), PackedByteArray("Pnj9c266vg4/kEeh1q8oBYUDCfYFAAAAAACA4z4BChXLk0I2sKWGXoSIDos1u7lP57oz23MDd9Z4zleLDsdU642xzMqqviL9clGFkfwPuedvJlOummpEDAAAAJjLclQEAA=="), PackedByteArray("/jf9um6SfgX/gVCCqeaPFk7bEPoD8PxBAQAAAAAAAIC/0XAAYK0vOpxLS35Hz9NM8RmNP0L357PSn3uSQzInthFXfKikOnlVTgPffZ4OmW5ons6+iNOuJaXlY7y3GTsl+5qsAw=="), PackedByteArray("Xgd9XzZR38B/IIZA7V5aL3tMsC8AAAAAAAD4zAKESKcGqDtiHIIywsn3v+dDZfjag1gN9ZRUYf0FthhdpRrPeE8ueQ5ajzTdC2ZD3GVyNf25/n3OtapuQZRBver+uEKjXu9jBQCAsPDB3dUA"), PackedByteArray("/uZ8XTfxK5//gDxR80s7gA4YK9J9AQAAAAzAJCyME3IXzt3m03eMxw+OgxJnr7Zl4jJcZQLYrgOMDODAdq+nUsm604tQVgrB/6zNdi2tEqbrBHEiPFvA9cP+6R83Ki49153V1xbjQmI0AAAAhedoeAF40AE="), PackedByteArray("Pgd9XDdO36B/QArU6KMeAEBbCfYFAAAAAIB2Dz40falPeq6TX3tc0LqwWQZColIO9gWAMuCHcWjW2adCaM1BmDb1OuUTu2Oe82KuxD+FOsvuKrHInKHMquYVbASS1pJBAADgrx0L+QA="), PackedByteArray("Pgf9uGziV7z/QAyo3aUeAEBbIewLAAAAIABggtnC1CRR4//ZA2dj3v7SUtrHtS56So2SBXB8TSC+RnIuZLEpzWcp31HzTunvqYoPDhSJoXAymMvE9QithAvJ7Kr1Dnm6bdr084vI+QAAUOmLk4ANAA=="), PackedByteArray("3tZ8XDf+I77/AAW1vrQDywAYK2JfAAAAAFMgiU/5ZU0uef+cXUlZ7EM2zRO9PGa3+0Z28IY7gHVqEaB3xTh0p/kwacxkeR9N5xajWdlSVxYv4fwB2jZx82pVvcIXQ+VxFcoqkSdRGmTXBQAAgHs6dFYC6BuwzStNAw=="), PackedByteArray("/ub8uG7il/sfqlqCQnV8d+3AAAB6bUL3BQAAAACACZLMThLf54OuPs/by3dpcj0xWtMMD2+aukosE8A6JaHP+fwOCexBJ4MPi4njwU4Sto70gNXuXpWHoxRPfkKeWb1k2WZML0ZhSzruTlGIIkwAAECod2d+CQA="), PackedByteArray("/lWc9w1+fv+A9o+an9MlYl0DMFaC/gBcCwAmlUyBjIsXJwfKNqR9Zv3v4KVBmTJoUz89RN5MPuvEsN0/BwAAsKsHdQOAWthcHSIo0Ug6LoJ4cBjrYSroTlJYnFKvKwwJkqN6SK5vZIeUe1rA16lyYQCyy3OpNtRbM644Un4aZe0pBJM0iy3u46XNOmviWXFCYz5OWHlzVMFcBaUA"), PackedByteArray("Hqa8XjfuzfrvQQVSK+Fg2sIEqhK6LwAACJiVoEDayO3d1H5/9Ujlf3vLpslOH8xMTeysnGkYqioALwZsrfT2b6py/SkqtHVUG8DMKRiz7+h4yCAUxgrD3/kdZWsGNfpgNHqVnuIzuzxMJgAAAMapUkQCgGTDFCXODicUsKe9yMKbvDLLt0ZL7Eq8ibNCTTkaBiQA"), PackedByteArray("/kVcL0M/eUag/VHT36R06SBnA8bK0/4A9KQFgElPawbslIP7v1dfH5o8VoaH2/3TV3dfRHGrpO8NWPseAAAAYjZrBADnIDQSrdsh3w0pgY0NTGpaBjaoxRle2iOkRZyOOqcRwLtadpL6s9ww0SexBS4tAGAquvtK2bRw1wr0cGbXzrJW3OtDm6iC2h4UN7Yxd1gqMtt4CfaxsMQ65CajfkqFRXze3XsBawA="), PackedByteArray("HmZcLxv5xfMPCP+pmQ6Hzw5AVyHsCwAACGaSgbR6Rt7j/m7LnmF73Z4PubOrlXouiY9pdn6gHjsAewIiH0GjRx+eJ2FD4rbemlpYvrskN8MjGVcrIUcQwYLDgh9B57s7OR0zVhzRy5AKAAB06KkWAMyPGQINa2Irbx4zVYeYtjuUPRi7G9SasVJiH3blqSG1WVnKyf7O2EUC"), PackedByteArray("vkVc5mF3vR+DVP5R82u6dKZlSwUQroT2B+A5DwBYy5qBNOeWsW3fOpCYEx9feW7358n7tFN5/HcyDqhZw41nAAAAeItrGQDoIf1b0Z1xCLbWswkzwW3G3HrOij/wMMVxeQ43LqolOZTYHhPryr3/+Uj30QJqO30MBQCocKiCivjXvglJMUDKt/WeBqfz0vy+mvcQFBTcFYbdKNXq6QXqBC1MFG2s924yAQ=="), PackedByteArray("3lXcLxt+5PwHjC+1HoJLTkRJwFiR9geg/38BgFBsGJjTb921GQd/H303CNt8P+Yt+U8Xs+Yxs85uQm7ZyAIAAODisZkAEIvj1HfZug4wh0SNL8bN2btibxAHR5MF2UzJ1s5iu9nSCJ16abOv5LRy0t6jyikHoACAnfBUpD0AYQp1cHTLHvS2yN1kmGpyqe/C57BgWlE4Zt/etenLfqoNUNhM"), PackedByteArray("3nXcr7kP6x+I5W2p6X/RJWajA8axaH8A+j0JIFBCywxkmIjbrr7z/3NPfiXnM9JuzXDbBcumy+zlDL0EAACAaIYBgPolrSV7xohR2IiZgroWvJuAOUxq0PVCDFsGcxwRxc+tfra59ZDyoogqpw5zt+swuxLXVgBATBqGARb/HmpM+72PVeZsqjHOwg3xNgvOVNyG9/Sypa8PJj0TXPVJc5ZpS8NjdCkAvAk="), PackedByteArray("3mW8bQc+9oygC3/0f9ElbmPvADWGaX8A9jyBgEA77QGY1TXOHHo63vrnapp48NCg6bmTQ+sHQ4b5GMyzrF0BAABAPCwEgD/rlexgYvCrL5Z3Cm0KYfaobgbN5lGZt+VBom1unDjo/2x8f0+WOE+qUYBbfBqdUe7fuVfp0SWAEaA4AcGXc5/Q31iu7egRWJMegME5UCNogyyWC9xWe1Eufx3lUphVfWcV7/QFrQh7BQ=="), PackedByteArray("vnW8XsJd+weUP4zwiIB42WgAGKuy2B8Ab0oACyZMARh48N1YkpJ+yIa7z99bQvLJAw/+njoYLdMe766CCQAAYFdiAwrAvV/q2dcz0pZOu+DTRM3VeIFg9PMi16VfDirThvcFd1ftDODANZHr/wLcExF1C/TG6+0EmgAAAJkw7m9BXLJnGlhLEJL4z/r8zZz8dVHV7YEqrIlHP27HxJQGA+SJvwZjV8sE"), PackedByteArray("3nW8bsOv6B/QfjDCIcElE++BsUq6/gDslyRQqpwfAczpS57PepqZErKvutfRQdv53HPzeVZWI2lGCwAAAB5MeikALQkxcIQL0c8JLYgVRpo66ZPXiVnb03nfdVAqq0l24urtp1SsF0hEvxZM6kDkse68UxupUhkASGArtjBBWo76/B0sK7v7yfu0rJAPkd4kwKiqQ/I33aOnIPLMpGGGXdrNLFiCiwGTaSQ="), PackedByteArray("3nW8bjNf2UagfTHCIdElP6PpExgrIbw/AO4DmElRigI2yVN2beTdGjh2P3yYsUjy1WBjd7OJveKszjYDAAAATkQEgBmzSpdE25K2yQhuFVysD1UFBkjTDKmhdjB1FGlrdRw0xv5KGlPWZSrO91OjJN123GSPRACABt+AlMwAyFx1G8LIYoe3g/I7+0phymuDLEoQOBdxWtFkZCMO5hcoYrx7DQFV9pz3rAAeAA=="), PackedByteArray("3kW8nMGXOED6UuN/4sui6UuQYKxUuv4AXKcAAhYqagpkrH/scsl3ebdNfznoys1G35LNXYriu+rGUomtAAAAODyLBYBLywVrOkKQm5UdWbjqYCw6PYh7vXl2qHD1Ybg0Udp+5dd8sc+oJXkkCdXVZmJn37Xdrj+5ewBySwAf36wptX5X5tkPXkHwxCbPROEHAnXU6/N/m6cyWYEf2WJKF8lPw8+VgEJ/IjmOl9hZQAMT"), PackedByteArray("3nW83sI3fQTaH0Y4IL50BhpeAMZqCO8PgHsDmElbFoBNcrl/8Z+LiYzN9dqezVNzd3V14Dv43jK7rXXYFAAAAJ9ECAA7+WANCHdEmXfpurJO0aUC7Z+r2DuNq0li8nPNLj4u/u14NLfjLqXL2mOhDXlYQ79EcuE+AcAdEtA3GIE0wVuEH4rAM1a7V7pWO/1utIHUC6Hx9dw6LpPHdmjBzu3n7jmfegdHYk0ICgA="), PackedByteArray("3nW8bcNH58dA+aN/49LlFGsNwJgW7Q/AVgQQ6Mg+A8jodSA762Xq1m12xtvhM89KvkPryd2UzE392H2yDQAAAH2tjgBQhGU78+z6bQ4jKokRnkEL5DGlP2bNVTnINqe+6LLqqsk6DB/phX0i8rNzASGKz+jN3LBCQWw2ck4L/RRibEK1hPsCaPKaakX58p7KNCci+7beNBAE+3XHuTxye1KFFNz1H6RkjBxSBQ=="), PackedByteArray("3mV83bIP7QekL/2lW2JCWiXdHNwIghh1KQp8LqvlCYPtpp5oxuaD2+wBAK/z54l1lN7/fHS1k16rvv69fMjLc/7hG91W6dsBxDi7MryOUL84iuisWbeNM1OHjr3nWtZZEKnDJ/zrW/v8/FXzDjLCvBIUBtcozlB6iPE74AIgzdKPHyOTIo57yXO1qIbtugpvvWC59VFJ0ZvD6JGwmyDa9Ui06xHs1nDY46gjRFt0JCNOn3jdICmKbF9X6k3YTbjoOYtNBwA=")], [PackedByteArray("vmX89xBvZgLjTRMVBFpL3wLWIwgIBwAA4CVKhddu//h8njABXYRi9pCbPeRmD7k3T1q8edLizZPR3pNktPcl29n0GamGcR6fMeIAtCyRskWkbAE=")]])
@@ -85,25 +96,133 @@ theme_override_constants/separation = 16
 
 [node name="Controls" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=726851962]
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
 theme_override_constants/separation = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls" unique_id=330727777]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
 
-[node name="DifficultyButton" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer" unique_id=709171323]
+[node name="Panel" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer" unique_id=1413313503]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_m1o7v")
+
+[node name="QuickStartToggle" type="CheckButton" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/Panel" unique_id=1146106180]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_3k6gv")
+theme_override_font_sizes/font_size = 16
+text = "Quick start"
+
+[node name="TimeStats" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer" unique_id=2032775452]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = ExtResource("3_gvja8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/TimeStats" unique_id=796877190]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/TimeStats/HBoxContainer" unique_id=748930411]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = SubResource("AtlasTexture_y3kpf")
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/TimeStats/HBoxContainer" unique_id=2049040469]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ln2h6")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/TimeStats/HBoxContainer/PanelContainer" unique_id=284372029]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="TimerLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/TimeStats/HBoxContainer/PanelContainer/MarginContainer" unique_id=2035010686]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("2_ln2h6")
+theme_override_font_sizes/font_size = 48
+text = "000"
+horizontal_alignment = 2
+
+[node name="RestartPanel" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer" unique_id=1120858159]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3586x")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/RestartPanel" unique_id=364656535]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RestartButton" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/RestartPanel/MarginContainer" unique_id=1433960630 instance=ExtResource("3_ln2h6")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/RestartPanel/MarginContainer" unique_id=589182216]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = SubResource("AtlasTexture_1q8bt")
+
+[node name="FlagsStats" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer" unique_id=654142394]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = ExtResource("3_gvja8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/FlagsStats" unique_id=530507097]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/FlagsStats/HBoxContainer" unique_id=342727715]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ln2h6")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/FlagsStats/HBoxContainer/PanelContainer" unique_id=1260033570]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="FlagsLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/FlagsStats/HBoxContainer/PanelContainer/MarginContainer" unique_id=331609117]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("2_ln2h6")
+theme_override_font_sizes/font_size = 48
+text = "000"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/FlagsStats/HBoxContainer" unique_id=411250503]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = SubResource("AtlasTexture_3k6gv")
+stretch_mode = 5
+
+[node name="Panel2" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer" unique_id=632171553]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_m1o7v")
+
+[node name="DifficultyButton" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/Panel2" unique_id=709171323]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("4_m1o7v")
-theme_override_styles/normal_mirrored = ExtResource("4_m1o7v")
-theme_override_styles/pressed = ExtResource("4_m1o7v")
-theme_override_styles/pressed_mirrored = ExtResource("4_m1o7v")
-theme_override_styles/hover = ExtResource("4_m1o7v")
-theme_override_styles/hover_mirrored = ExtResource("4_m1o7v")
-theme_override_styles/disabled = ExtResource("4_m1o7v")
-theme_override_styles/disabled_mirrored = ExtResource("4_m1o7v")
-theme_override_styles/focus = ExtResource("4_m1o7v")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m1o7v")
 alignment = 1
 selected = 0
 item_count = 4
@@ -116,121 +235,12 @@ popup/item_2/id = 2
 popup/item_3/text = "Hard+"
 popup/item_3/id = 3
 
-[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer" unique_id=49136601]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Panel" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer" unique_id=1413313503]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("4_m1o7v")
-
-[node name="QuickStartToggle" type="CheckButton" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/Panel" unique_id=1146106180]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_fonts/font = ExtResource("6_3k6gv")
-theme_override_font_sizes/font_size = 32
-text = "Quick start"
-
-[node name="Stats" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls" unique_id=1107332904]
-layout_mode = 2
-size_flags_stretch_ratio = 0.15
-theme_override_constants/separation = 32
-
-[node name="TimeStats" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/Stats" unique_id=2032775452]
-layout_mode = 2
-size_flags_horizontal = 2
-theme_override_styles/panel = ExtResource("3_gvja8")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/Stats/TimeStats" unique_id=796877190]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/Stats/TimeStats/HBoxContainer" unique_id=748930411]
-custom_minimum_size = Vector2(72, 72)
-layout_mode = 2
-texture = SubResource("AtlasTexture_y3kpf")
-stretch_mode = 5
-
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/Stats/TimeStats/HBoxContainer" unique_id=2049040469]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ln2h6")
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/Stats/TimeStats/HBoxContainer/PanelContainer" unique_id=284372029]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-
-[node name="TimerLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/Stats/TimeStats/HBoxContainer/PanelContainer/MarginContainer" unique_id=2035010686]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("2_ln2h6")
-theme_override_font_sizes/font_size = 72
-text = "000"
-
-[node name="RestartPanel" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/Stats" unique_id=1120858159]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_y3kpf")
-
-[node name="RestartButton" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/Stats/RestartPanel" unique_id=1433960630 instance=ExtResource("3_ln2h6")]
-custom_minimum_size = Vector2(96, 96)
-layout_mode = 2
-stretch_mode = 5
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/Stats/RestartPanel" unique_id=589182216]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-texture = SubResource("AtlasTexture_1q8bt")
-
-[node name="FlagsStats" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/Stats" unique_id=654142394]
-layout_mode = 2
-size_flags_horizontal = 10
-theme_override_styles/panel = ExtResource("3_gvja8")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/Stats/FlagsStats" unique_id=530507097]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/Stats/FlagsStats/HBoxContainer" unique_id=411250503]
-custom_minimum_size = Vector2(72, 72)
-layout_mode = 2
-texture = SubResource("AtlasTexture_3k6gv")
-stretch_mode = 5
-
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/Stats/FlagsStats/HBoxContainer" unique_id=342727715]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ln2h6")
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/Stats/FlagsStats/HBoxContainer/PanelContainer" unique_id=1260033570]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-
-[node name="FlagsLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/Stats/FlagsStats/HBoxContainer/PanelContainer/MarginContainer" unique_id=331609117]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("2_ln2h6")
-theme_override_font_sizes/font_size = 72
-text = "000"
-
 [node name="Minefield" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1105631894 instance=ExtResource("2_xbxml")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.85
+size_flags_stretch_ratio = 0.9
 
 [node name="GameOver" type="PanelContainer" parent="PanelContainer" unique_id=1586719214]
 unique_name_in_owner = true
@@ -263,6 +273,6 @@ volume_db = -15.0
 [node name="GameTimer" type="Timer" parent="." unique_id=1843067873]
 unique_name_in_owner = true
 
-[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/DifficultyButton" to="." method="_on_difficulty_button_item_selected"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/Panel/QuickStartToggle" to="." method="_on_check_button_toggled"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Controls/Stats/RestartPanel/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/RestartPanel/MarginContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer/Panel2/DifficultyButton" to="." method="_on_difficulty_button_item_selected"]
