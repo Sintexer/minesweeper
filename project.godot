@@ -13,7 +13,7 @@ config_version=5
 config/name="Minesweeper"
 run/main_scene="uid://bb40p22gn8861"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://v63kt4f5rtkg"
 
 [autoload]
 
@@ -22,7 +22,7 @@ SpriteManager="*uid://huxm7f1r4oc8"
 
 [display]
 
-window/size/viewport_width=720
+window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 

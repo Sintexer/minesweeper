@@ -12,11 +12,14 @@ var flags: int = 0
 var temp_revealed: Array[Cell] = []
 var revealed_wave: Array[Cell] = []
 
+var is_game_over: bool = false
+
 signal game_over(is_win: bool)
 signal cell_updated(cell: Cell)
 signal reveal_wave(cells: Array[Cell], wave_index: int)
 
 func set_up(difficulty: Difficulty) -> void:
+	is_game_over = false
 	flags = 0
 	rows = difficulty.rows
 	cols = difficulty.cols
@@ -60,7 +63,6 @@ func generate_mines_indices() -> Array[int]:
 		if !mines.has(index):
 			mines.append(index)
 	mines.sort()
-	print(mines)
 	return mines
 		
 func add_one_to_nearest_cells(i: int, j: int) -> void:
@@ -88,6 +90,8 @@ func get_cell_by_index(i: int) -> Cell:
 	return get_cell(row, col)
 
 func reveal_any_start_cell() -> void:
+	if is_game_over:
+		return
 	var size: int = rows * cols
 	var best_index: int = -1
 	var best_number: int = 9 # max 8 + 1
@@ -197,9 +201,11 @@ func check_win_condition() -> void:
 		
 func process_win() -> void:
 	game_over.emit(true)
+	is_game_over = true
 
 func process_game_over() -> void:
 	game_over.emit(false)
+	is_game_over = true
 		
 func print_grid() -> void:
 	print("-".repeat(15))

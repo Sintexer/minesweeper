@@ -114,8 +114,10 @@ theme_override_styles/panel = ExtResource("4_m1o7v")
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_3k6gv")
-theme_override_font_sizes/font_size = 16
-text = "Quick start"
+theme_override_font_sizes/font_size = 24
+text = "Quick
+start"
+alignment = 1
 
 [node name="TimeStats" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Controls/HBoxContainer" unique_id=2032775452]
 layout_mode = 2
