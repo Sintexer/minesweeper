@@ -4,6 +4,7 @@ A classic Minesweeper game made with Godot 4 featuring responsive UI.
 
 **Features:**
 - Several difficulty levels
+- Quick start option saves you from frustrating first-click explosions
 - Juicy clicks
 - Responsive UI
 
